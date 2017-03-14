@@ -1,17 +1,20 @@
-window.onload = function(){
 
+//load javascript
+window.onload = function(){
+  //create a box container for the graph
   var container = d3.select('body')
     .append('svg')
     .attr('width', '980px')
     .attr('height', '500px')
     .attr('class', 'container')
     .style("background-color", "rgba(0,0,0,0.2)");
-
+  //create a box inside the container
   var innerRect = container.append('rect')
   .datum(400)
   .attr('width', function(d){
+    //width needs to be greater than 2x the height to fit points
     return d * 2 + 75;
-  }) //rectangle width
+  })
   .attr('height', function(d){
     return d;
   }) //rectangle height
@@ -20,7 +23,7 @@ window.onload = function(){
   .attr("x", 50) //position from left on the x (horizontal) axis
   .attr("y", 50) //position from top on the y (vertical) axis
   .style("fill", "#b19cd9"); //fill color
-
+//nested array with city names and population
 var cityPop = [
         {
             city: 'Atlanta',
@@ -39,23 +42,23 @@ var cityPop = [
             population: 197872
         }
     ];
-
+//set the x axis of the the graph
 var x = d3.scaleLinear() //create the scale
         .range([90, 810]) //output min and max
         .domain([0, 3]);
-
+//returns the minimum population
 var minPop = d3.min(cityPop, function(d){
         return d.population;
     });
-
+//returns th maximun population
 var maxPop = d3.max(cityPop, function(d){
         return d.population;
     });
-
+//sets the y axis of the graph
 var y = d3.scaleLinear()
         .range([450, 50])
         .domain([0, 550000]);
-
+//sets a min an max color for the min and man population
 var color = d3.scaleLinear()
       .range([
           "#b2dfee",
@@ -65,7 +68,7 @@ var color = d3.scaleLinear()
           minPop,
           maxPop
             ]);
-
+//creates circles for the population based on size
 var circles = container.selectAll(".circles") //but wait--there are no circles yet!
        .data(cityPop) //here we feed in an array
        .enter()
@@ -97,7 +100,7 @@ var axis = container.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(50, 0)")
         .call(yAxis);
-
+//add title to the graph
 var title = container.append("text")
         .attr("class", "title")
         .attr("text-anchor", "middle")
@@ -105,6 +108,7 @@ var title = container.append("text")
         .attr("y", 30)
         .text("City Populations");
 
+//adds labels to each circle
 var labels = container.selectAll(".labels")
         .data(cityPop)
         .enter()
@@ -130,7 +134,7 @@ var nameLine = labels.append("tspan")
               return d.city;
       });
 var format = d3.format(",");
-
+//formats the label
 var popLine = labels.append("tspan")
         .attr("class", "popLine")
         .attr("x", function(d,i){
