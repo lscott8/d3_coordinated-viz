@@ -1,31 +1,48 @@
 .counties {
-    stroke: #834c24;
-    stroke-width: 0.5px;
+    stroke: #fff;
+    stroke-width: 3px;
     stroke-linecap: round;
 }
 
-.map {
-    border: medium solid #999;
-}
+
 
 .chart {
     float: right;
-    margin: 7px 20px 0 0;
+    margin: 10px 15px 0 0;
+}
+
+h4{
+  font-family: sans-serif;
+  color: grey;
+  font-size: 0.4em;
+}
+h3{
+    font-family: sans-serif;
+    font-size: 0.8em;
+    color: gray;
+
+}
+
+h2{
+  font-family: sans-serif;
+  font-size: 1.6em;
+  color: grey;
+  font-weight: "bold";
 }
 
 .chartTitle {
     font-family: sans-serif;
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
 .chartBackground {
-    fill: #D1CAB0;
+    fill: #999;
 }
 
 .chartFrame {
     fill: none;
-    stroke: #999;
+    stroke: none;
     stroke-width: 3px;
     shape-rendering: crispEdges;
 }
@@ -40,6 +57,45 @@
 
 .axis text {
     font-family: sans-serif;
-    font-size: 0.9em;
+    font-size: 1.9em;
     fill: #999;
+}
+
+.dropdown {
+    position: absolute;
+    top: 130px;
+    left: 330px;
+    z-index: 10;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 2px;
+    border: 1px solid #999;
+}
+
+option {
+    font-weight: normal;
+}
+
+.infolabel {
+    position: absolute;
+    height: 50px;
+    min-width: 100px;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #999;
+    padding: 5px 10px;
+    top: -50px;
+}
+
+.infolabel h1 {
+    margin: 0 20px 0 0;
+    padding: 0;
+    display: inline-block;
+    line-height: 1em;
+    font-family: sans-serif;
+}
+.infolabel{
+  font-family: sans-serif;
+  font-size: 15px;
 }
